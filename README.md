@@ -3,7 +3,7 @@ SDR ISO package for the Raspberry Pi 4b
 
 I wanted a dedicated, portable SDR package that was physically small in size for field work.
 There are several Amature Radio linux distros available for PC's with SDR but nothing as complete
-ffor th Pi.
+for the Pi.
 
 On this site you will find an ISO image thats just plug in and boot. It contains the following.
 
