@@ -21,6 +21,7 @@ On this site you will find an ISO image thats just plug in and boot. It contains
 Once you have the ISO, just plug it in and boot. Username: user, Password: password
 
 Feel free to report any issues or if you'd like to see something else added.
+In the releases section you'll find a little video demo.
 
 Regards,
     John Telek.
