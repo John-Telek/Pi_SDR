@@ -8,10 +8,15 @@ ffor th Pi.
 On this site you will find an ISO image thats judt plug in and boot. It contains the following.
 
 (1) SDRAnglel
+
 (2) SigDigger
+
 (3) SDRplusplus
+
 (4) Cubic SDR
+
 (5) GQRX
+
 
 Once you have the ISO, just plug it in and boot. Username: user, Password: password
 
