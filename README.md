@@ -5,7 +5,7 @@ I wanted a dedicated, portable SDR package that was physically small in size for
 There are several Amature Radio linux distros available for PC's with SDR but nothing as complete
 ffor th Pi.
 
-On this site you will find an ISO image thats judt plug in and boot. It contains the following.
+On this site you will find an ISO image thats just plug in and boot. It contains the following.
 
 (1) SDRAnglel
 
