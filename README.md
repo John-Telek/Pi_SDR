@@ -1,12 +1,14 @@
 # Pi_SDR
 SDR ISO package for the Raspberry Pi 4b
 
-I wanted a dedicated, portable SDR package that was physically small in size for field work.
+I wanted a dedicated, portable SDR package that was physicaly small in size for field work.
 There are several Amature Radio linux distros available for PC's with SDR but I wanted to
 start from scratch and slowly make something that everyone wants and likes for the Pi by
-giving you a say in it.
+giving you a say in it. As not all apps are available in the software repository I thought
+that I could detail the buid instructions on this site so everyone else can do it. Get everyone
+not just those who can.
 
-On this site you will find an ISO image thats just plug in and boot. It contains the following.
+On this site you will find an ISO image, Pi_SDR-1.0.tgz thats just plug in and boot. It contains the following.
 
 (1) SDRAnglel
 
@@ -18,17 +20,18 @@ On this site you will find an ISO image thats just plug in and boot. It contains
 
 (5) GQRX
 
-
-Once you have the .img file, burn it to a 32G High Speed Micro SD card and just plug it in and boot. Username: user, Password: password
-You might just be able to rename it .iso as it's made with gnome-disks.
-
 RELEASE: 1.0
 
-This release is HUGE (32G) and I apologise because I hadn't thought about doing this.
-I know I can shrink the filesystem but wont try until I have a couple of backups.
+This release is HUGE (32G) and I apologise because I hadn't thought about it before doing this.
+You can get the tgz file and uncompress it with
 
+$ tar -xcfv Pi_SDR-1.0.tgz
+
+Have a look at your disk utils as they might able to burn the image to SD or
+search your software repositories for suitable tools.
 
 This is a direct copy of my own system for the Pi 4b.
+
 Gqrx and CubicSDR and SigDigger (Latest main release) can be launched from the desktop.
 
 Gqrx and CubicSDR are the latest Raspian packages. (Add/Remove Software)
@@ -51,7 +54,7 @@ It installs in /usr/local/bin
 
 SigDigger latest main release.
 
-(1) Dependencies. (Not listed on github)
+(1) Dependencies. (Not listed on github courtesy of BatchDrake of sdrangel fame. Thanks mate. :)
 
 $ sudo apt-get update && sudo apt-get -y install \
 git cmake g++ pkg-config autoconf automake libtool libfftw3-dev libusb-1.0-0-dev libusb-dev libhidapi-dev libopengl-dev \
@@ -81,6 +84,9 @@ And if you like, you can keep up with the latest.
 If there is something else that you want in the next release, please feel free to contact me.
 Feel free to report any issues or if you'd like to see something else added.
 In the releases section you'll find a little video demo and Ver 1.0 of Pi_SDR.
+
+And most importantly I'd like to thank the authors and open source community for allowing
+us amatuers to partake in this ever expanding technology.
 
 Regards,
     John Telek.
