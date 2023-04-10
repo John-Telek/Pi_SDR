@@ -2,8 +2,9 @@
 SDR ISO package for the Raspberry Pi 4b
 
 I wanted a dedicated, portable SDR package that was physically small in size for field work.
-There are several Amature Radio linux distros available for PC's with SDR but nothing as complete
-for the Pi.
+There are several Amature Radio linux distros available for PC's with SDR but I wanted to
+start from scratch and slowly make something that everyone wants and likes for the Pi by
+giving you a say in it.
 
 On this site you will find an ISO image thats just plug in and boot. It contains the following.
 
@@ -30,6 +31,7 @@ This is a direct copy of my own system for the Pi 4b.
 Gqrx and CubicSDR and SigDigger (Latest main release) can be launched from the desktop.
 
 Gqrx and CubicSDR are the latest Raspian packages. (Add/Remove Software)
+
 SigDigger (Desktop) is the latest main release from github. 
 
 To run SigDigger (latest development release) execute the following scripts in the user home directory.
@@ -41,6 +43,7 @@ To run sdrangel (latest main release) execute the following scripts in the user 
 If you want to play.
 
 Sdrangel latest main release.
+
 This made in /opt/build and the instructions to build it are at https://github.com/f4exb/sdrangel/wiki/Compile-from-source-in-Linux
 
 It installs in /usr/local/bin
