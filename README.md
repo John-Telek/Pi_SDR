@@ -54,6 +54,7 @@ libqt5serialport5-dev qtdeclarative5-dev qtpositioning5-dev qtlocation5-dev libq
 qtwebengine5-dev qtbase5-private-dev \
 libfaad-dev zlib1g-dev libboost-all-dev libasound2-dev pulseaudio libopencv-dev libxml2-dev bison flex \
 ffmpeg libavcodec-dev libavformat-dev libopus-dev doxygen graphviz
+
 $ sudo apt-get -y install libsndfile1 libsndfile1-dev
 
 (3) Then follow the build instructions at https://github.com/BatchDrake/SigDigger
