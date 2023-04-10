@@ -42,6 +42,7 @@ This made in /opt/build and the instructions to build it are at https://github.c
 It installs in /usr/local/bin
 
 SigDigger latest main release.
+
 (1) Dependencies. (Not listed on github)
 
 $ sudo apt-get update && sudo apt-get -y install \
@@ -57,7 +58,7 @@ ffmpeg libavcodec-dev libavformat-dev libopus-dev doxygen graphviz
 
 $ sudo apt-get -y install libsndfile1 libsndfile1-dev
 
-(3) Then follow the build instructions at https://github.com/BatchDrake/SigDigger
+(2) Then follow the build instructions at https://github.com/BatchDrake/SigDigger
 
 SigDigger latest development release.
 By executing the following, you will download and compile the latest dev release.
