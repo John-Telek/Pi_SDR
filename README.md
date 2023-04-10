@@ -25,7 +25,7 @@ RELEASE: 1.0
 This release is HUGE (32G) and I apologise because I hadn't thought about it before doing this.
 You can get the tgz file and uncompress it with
 
-$ tar -xcfv Pi_SDR-1.0.tgz
+$ tar -xfz Pi_SDR-1.0.tgz
 
 Have a look at your disk utils as they might able to burn the image to SD or
 search your software repositories for suitable tools.
