@@ -48,13 +48,13 @@ If you want to play.
 
 Sdrangel latest main release.
 
-This made in /opt/build and the instructions to build it are at https://github.com/f4exb/sdrangel/wiki/Compile-from-source-in-Linux
+This is made in /opt/build and the instructions to build it are at https://github.com/f4exb/sdrangel/wiki/Compile-from-source-in-Linux
 
 It installs in /usr/local/bin
 
 SigDigger latest main release.
 
-(1) Dependencies. (Not listed on github courtesy of BatchDrake of sdrangel fame. Thanks mate. :)
+(1) Dependencies. Not listed on github SigDigger page but courtesy of f4exb of sdrangel fame. Thanks mate. :)
 
 $ sudo apt-get update && sudo apt-get -y install \
 git cmake g++ pkg-config autoconf automake libtool libfftw3-dev libusb-1.0-0-dev libusb-dev libhidapi-dev libopengl-dev \
