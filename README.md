@@ -23,7 +23,7 @@ Once you have the ISO, just plug it in and boot. Username: user, Password: passw
 RELEASE: 1.0
 
 This release is HUGE (32G) and I apologise because I hadn't thought about doing this.
-I will get an 8G card when I can for the next release.
+I know I can shrink the filesystem but wont try until I have a couple of backups.
 
 
 This is a direct copy of my own system for the Pi 4b.
