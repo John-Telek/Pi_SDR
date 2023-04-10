@@ -61,6 +61,7 @@ $ sudo apt-get -y install libsndfile1 libsndfile1-dev
 (2) Then follow the build instructions at https://github.com/BatchDrake/SigDigger
 
 SigDigger latest development release.
+
 By executing the following, you will download and compile the latest dev release.
 This release fixed the issue of the DC spike you see in the middle of the spectrum display.
 And if you like, you can keep up with the latest.
