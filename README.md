@@ -19,7 +19,8 @@ On this site you will find an ISO image thats just plug in and boot. It contains
 (5) GQRX
 
 
-Once you have the ISO, just plug it in and boot. Username: user, Password: password
+Once you have the .img file, burn it to a 32G High Speed Micro SD card and just plug it in and boot. Username: user, Password: password
+You might just be able to rename it .iso as it's made with gnome-disks.
 
 RELEASE: 1.0
 
