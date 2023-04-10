@@ -22,7 +22,7 @@ Once you have the ISO, just plug it in and boot. Username: user, Password: passw
 
 RELEASE: 1.0
 
-This release is HUGE (32G) only because I hadn't thought about doing this.
+This release is HUGE (32G) and I apologise because I hadn't thought about doing this.
 
 This is a direct copy of my own system for the Pi 4b.
 Gqrx and CubicSDR and SigDigger (Latest main release) can be launched from the desktop.
