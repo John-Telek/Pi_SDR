@@ -38,6 +38,7 @@ If you want to play.
 
 Sdrangel latest main release.
 This made in /opt/build and the instructions to build it are at https://github.com/f4exb/sdrangel/wiki/Compile-from-source-in-Linux
+
 It installs in /usr/local/bin
 
 SigDigger latest main release.
