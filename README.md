@@ -2,7 +2,7 @@
 DIY SDR for the Raspberry Pi 3b and 4b
 
 I wanted a dedicated, portable SDR package that was physicaly small in size for field work.
-There are several Amature Radio linux distros available for PC's with SDR but I wanted to
+There are several Amature Radio linux distros available for PC's and the Pi with SDR but I wanted to
 start from scratch and slowly make something that everyone wants and likes for the Pi by
 giving you a say in it. As not all apps are available in the software repository I thought
 that I could detail the buid instructions on this site so everyone else can do it. Get everyone
@@ -48,12 +48,14 @@ SigDigger (Desktop) is the latest main release from github.
 SDRPlusPlus is the latest daily build release.
 
 To run SigDigger (latest development release) execute the following scripts in the user home directory.
-1) ./SigDigger.sh
+1) $ ./SigDigger.sh
 
 To run sdrangel (latest main release) execute the following scripts in the user home directory.
-1) ./sdrangel.sh
+1) $ sdrpp
 
-If you want to play.
+To start from scratch simply install Raspian onto your Pi and update its software. Once done you can start building.
+
+***** IF YOU WANT TO PLAY *****
 
 Sdrangel latest main release.
 
@@ -74,9 +76,7 @@ qml-module-qtquick-dialogs qml-module-qtquick-controls qml-module-qtquick-contro
 libqt5serialport5-dev qtdeclarative5-dev qtpositioning5-dev qtlocation5-dev libqt5texttospeech5-dev \
 qtwebengine5-dev qtbase5-private-dev \
 libfaad-dev zlib1g-dev libboost-all-dev libasound2-dev pulseaudio libopencv-dev libxml2-dev bison flex \
-ffmpeg libavcodec-dev libavformat-dev libopus-dev doxygen graphviz
-
-$ sudo apt-get -y install libsndfile1 libsndfile1-dev
+ffmpeg libavcodec-dev libavformat-dev libopus-dev doxygen graphviz libsndfile1 libsndfile1-dev
 
 (2) Then follow the build instructions at https://github.com/BatchDrake/SigDigger
 
@@ -96,6 +96,10 @@ SDRPlusPlus
 
 $ sudo apt update; sudo apt upgrade
 
+***** If you dont have the C compiler installed execute the following. *****
+
+$ sudo apt-get update && sudo apt-get -y install git cmake g++ pkg-config autoconf automake libtool libfftw3-dev libusb-1.0-0-dev libusb-dev libhidapi-dev libopengl-dev qtbase5-dev qtchooser libqt5multimedia5-plugins qtmultimedia5-dev libqt5websockets5-dev qttools5-dev qttools5-dev-tools libqt5opengl5-dev libqt5quick5 libqt5charts5-dev qml-module-qtlocation  qml-module-qtpositioning qml-module-qtquick-window2 qml-module-qtquick-dialogs qml-module-qtquick-controls qml-module-qtquick-controls2 qml-module-qtquick-layouts libqt5serialport5-dev qtdeclarative5-dev qtpositioning5-dev qtlocation5-dev libqt5texttospeech5-dev qtwebengine5-dev qtbase5-private-dev libfaad-dev zlib1g-dev libboost-all-dev libasound2-dev pulseaudio libopencv-dev libxml2-dev bison flex ffmpeg libavcodec-dev libavformat-dev libopus-dev doxygen graphviz libsndfile1 libsndfile1-dev
+
 Then come the dependancies.
 
 $ sudo apt install libfftw3-dev libglfw3-dev libvolk2-dev libsoapysdr-dev libairspyhf-dev libiio-dev libad9361-dev librtaudio-dev libhackrf-dev
@@ -111,7 +115,6 @@ $ cd SDRPlusPlus-master
 
 $ mkdir build;cd build
 $ cmake ..
-
 
 ### NOTE ###############################################################
 If you get errors while running cmake it will most likely be a missing library.
