@@ -22,67 +22,101 @@ libfaad-dev zlib1g-dev libboost-all-dev libasound2-dev pulseaudio libopencv-dev 
 ffmpeg libavcodec-dev libavformat-dev libopus-dev doxygen graphviz libsndfile1 libsndfile1-dev
 
 ** The following installs the SoapySDR libs.
+
 $ sudo apt install libsoapysdr-dev libsoapysdr0.7 soapysdr-module-all
 
 
+##########################################
 
 SigDigger latest main release.
 
 (2) Now we download and build sigutils, suscan, SuWidgets and SigDigger.
+
 Make a temporary directory to download and build the code.
 
 ** We will get everything in one hit.
 $ cd ~
+
 $ mkdir tmp;cd tmp
+
 $ git clone https://github.com/BatchDrake/sigutils
+
 $ git clone https://github.com/BatchDrake/suscan
+
 $ git clone https://github.com/BatchDrake/SuWidgets
+
 $ git clone https://github.com/BatchDrake/SigDigger
 
 (3) Building and installing sigutils
+
 First, you must create a build directory and configure it with:
+
 $ cd ~/tmp/sigutils
+
 $ mkdir build
+
 $ cd build
+
 $ cmake ..
 
 (4) If the previous commands were successful, you can start the build by typing:
+
 $ make
 
 (5) And proceed to install the library in your system by running as root:
+
 $ sudo make install
+
 $ sudo ldconfig
 
 (6) Building and installing suscan.
+
 $ cd ~/tmp/suscan
+
 $ mkdir build
+
 $ cd build
+
 $ cmake ..
+
 $ make
 
 (7) If all is well.
+
 $ sudo make install
+
 $ sudo ldconfig
 
+
 (8) You can verify your installation by running:
+
 $ suscan.status
 
 (9) Building and installing SuWidgets.
+
 $ cd ~/tmp/SuWudgets
+
 $ qmake SuWidgetsLib.pro
+
 $ make
+
 $ sudo make install
 
 (10) Building and installing SigDigger.
+
 $ cd ~/tmp/SigDigger
+
 $ qmake SigDigger.pro
+
 $ make -j5
+
 $ sudo make install
 
 (11) To run.
+
 $ ./SigDigger
 
-#######################################################################################################################
+##############################
 
 By executing the following, you will download and compile the latest dev release.
 This release fixed the issue of the DC spike you see in the middle of the spectrum display.
