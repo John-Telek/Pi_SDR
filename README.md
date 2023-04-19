@@ -290,6 +290,7 @@ $ rtl_tcp -a 192.168.45.183 2>&1 >./rtl_tcp.log &
            
 To check if it's running and listening.
 user@debian:~/tmp$ sudo netstat -natp | grep LIST
+
 tcp        0      0 192.168.1.102:1234      0.0.0.0:*               LISTEN      31860/rtl_tcp 
 
 Now just setup the IP and PORT number in your SDR app and your ready to go.
