@@ -279,15 +279,17 @@ RTL_TCP SERVER
 
 Setting up an rtl_tcp server.
 
-Use ifconfig to get your local IP address.
+Use ifconfig to get your local IP address. In our example eth0 is 192.168.45.183
 
 Default port number is 1234
 
 $ sudo apt install librtlsdr0 librtlsdr-dev rtl-sdr
+
 $ cd ~/tmp
-$ rtl_tcp -a xxx.xxx.xxx.xxx 2>&1 >./rtl_tcp.log &
-        #####  IP ADDRESS  #####
-              
+
+$ rtl_tcp -a 192.168.45.183 2>&1 >./rtl_tcp.log &
+
+           
 To check if it's running and listening.
 user@debian:~/tmp$ sudo netstat -natp | grep LIST
 tcp        0      0 192.168.1.102:1234      0.0.0.0:*               LISTEN      31860/rtl_tcp 
