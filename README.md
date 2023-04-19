@@ -8,68 +8,13 @@ giving you a say in it. As not all apps are available in the software repository
 that I could detail the buid instructions on this site so everyone else can do it. Get everyone
 not just those who can.
 
-So I am doing 3 things.
+##################################################################################################
+(1) Development environment and dependencies courtesy of f4exb of sdrangel fame. Thanks mate. :) #
+##################################################################################################
 
-1) Provide a plug and run iso that can be put onto a Micro SD card.
-2) Provide step buy step instructions to do it yourself from scratch.
-3) Provide precompiled binaries for those who just want to play.
-
-Re the ISO.
-At the moment I have one 32G SD card to use and need to get a smaller one that cam be compressed into
-a smaller size for distribution when I'm able. It will have the following.
-
-(1) SDRAnglel
-
-(2) SigDigger
-
-(3) SDRplusplus
-
-(4) Cubic SDR
-
-(5) GQRX
-
-RELEASE: 1.0
-
-Once you download the file you can uncompress it with.
-
-$ tar -xfz Pi_SDR-1.0.tgz
-
-Have a look at your disk utils as they might able to burn the image to SD or
-search your software repositories for suitable tools.
-
-This is a direct copy of my own system for the Pi 4b.
-
-Gqrx and CubicSDR and SigDigger (Latest main release) can be launched from the desktop.
-
-Gqrx and CubicSDR are the latest Raspian packages. (Add/Remove Software)
-
-SigDigger (Desktop) is the latest main release from github. 
-
-SDRPlusPlus is the latest daily build release.
-
-To run SigDigger (latest development release) execute the following scripts in the user home directory.
-1) $ ./SigDigger.sh
-
-To run sdrangel (latest main release) execute the following scripts in the user home directory.
-1) $ sdrpp
-
-To start from scratch simply install Raspian onto your Pi and update its software. Once done you can start building.
-
-***** IF YOU WANT TO PLAY *****
-
-Sdrangel latest main release.
-
-This is made in /opt/build and the instructions to build it are at https://github.com/f4exb/sdrangel/wiki/Compile-from-source-in-Linux
-
-It installs in /usr/local/bin
-
-SigDigger latest main release.
-
-(1) Dependencies. Not listed on github SigDigger page but courtesy of f4exb of sdrangel fame. Thanks mate. :)
-
-$ sudo apt-get update && sudo apt-get -y install \
+$ sudo apt-get update && sudo apt-get -y install build-essential \
 git cmake g++ pkg-config autoconf automake libtool libfftw3-dev libusb-1.0-0-dev libusb-dev libhidapi-dev libopengl-dev \
-qtbase5-dev qtchooser libqt5multimedia5-plugins qtmultimedia5-dev libqt5websockets5-dev \
+qtbase5-dev qtchooser libqt5multimedia5-plugins qtmultimedia5-dev libqt5websockets5-dev qt5-qmake qt5-qmake-bin \
 qttools5-dev qttools5-dev-tools libqt5opengl5-dev libqt5quick5 libqt5charts5-dev \
 qml-module-qtlocation  qml-module-qtpositioning qml-module-qtquick-window2 \
 qml-module-qtquick-dialogs qml-module-qtquick-controls qml-module-qtquick-controls2 qml-module-qtquick-layouts \
@@ -78,30 +23,253 @@ qtwebengine5-dev qtbase5-private-dev \
 libfaad-dev zlib1g-dev libboost-all-dev libasound2-dev pulseaudio libopencv-dev libxml2-dev bison flex \
 ffmpeg libavcodec-dev libavformat-dev libopus-dev doxygen graphviz libsndfile1 libsndfile1-dev
 
-(2) Then follow the build instructions at https://github.com/BatchDrake/SigDigger
+** The following installs the SoapySDR libs.
+$ sudo apt install libsoapysdr-dev libsoapysdr0.7 soapysdr-module-all
 
-SigDigger latest development release.
+
+###################################################################################################
+SigDigger latest main release.                                                                    #
+###################################################################################################
+
+(2) Now we download and build sigutils, suscan, SuWidgets and SigDigger.
+Make a temporary directory to download and build the code.
+
+** We will get everything in one hit.
+$ cd ~
+$ mkdir tmp;cd tmp
+$ git clone https://github.com/BatchDrake/sigutils
+$ git clone https://github.com/BatchDrake/suscan
+$ git clone https://github.com/BatchDrake/SuWidgets
+$ git clone https://github.com/BatchDrake/SigDigger
+
+(3) Building and installing sigutils
+First, you must create a build directory and configure it with:
+$ cd ~/tmp/sigutils
+$ mkdir build
+$ cd build
+$ cmake ..
+
+(4) If the previous commands were successful, you can start the build by typing:
+$ make
+
+(5) And proceed to install the library in your system by running as root:
+$ sudo make install
+$ sudo ldconfig
+
+(6) Building and installing suscan.
+$ cd ~/tmp/suscan
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+
+(7) If all is well.
+$ sudo make install
+$ sudo ldconfig
+
+(8) You can verify your installation by running:
+$ suscan.status
+
+(9) Building and installing SuWidgets.
+$ cd ~/tmp/SuWudgets
+$ qmake SuWidgetsLib.pro
+$ make
+$ sudo make install
+
+(10) Building and installing SigDigger.
+$ cd ~/tmp/SigDigger
+$ qmake SigDigger.pro
+$ make -j5
+$ sudo make install
+
+(11) To run.
+$ ./SigDigger
+
+#######################################################################################################################
 
 By executing the following, you will download and compile the latest dev release.
 This release fixed the issue of the DC spike you see in the middle of the spectrum display.
-And if you like, you can keep up with the latest.
+And if you like, you can keep up with the latest. Create as file called SD.sh in dir ~/tmp
+and paste the following code into it, make it executable and run.
 
-1) cd ./tmp;SD.sh
+############### BEGINNING of FILE #####################################################################################
+#!/usr/bin/env bash
+#
+#  blsd: Build Latest SigDigger, easily
+#
+#  Copyright (C) 2021 Gonzalo JosÃ© Carracedo Carballal
+#
+#  This program is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU Lesser General Public License as
+#  published by the Free Software Foundation, either version 3 of the
+#  License, or (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful, but
+#  WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU Lesser General Public License for more details.
+#
+#  You should have received a copy of the GNU Lesser General Public
+#  License along with this program.  If not, see
+#  <http://www.gnu.org/licenses/>
+#
+#
+
+DISTROOT="$PWD"
+BLSDROOT="$DISTROOT/blsd-dir"
+
+function try()
+{
+    echo -en "[  ....  ] $1 "
+    shift
+    
+    STDOUT="$DISTROOT/$1-$$-stdout.log"
+    STDERR="$DISTROOT/$1-$$-stderr.log"
+    "$@" > "$STDOUT" 2> "$STDERR"
+    
+    if [ $? != 0 ]; then
+	echo -e "\r[ \033[1;31mFAILED\033[0m ]"
+	echo
+	echo "Standard output and error were saved respectively in:"
+	echo " - $STDOUT"
+	echo " - $STDERR"
+	echo
+	echo "Fix errors and try again"
+	echo
+	exit 1
+    fi
+
+    echo -e "\r[   \033[1;32mOK\033[0m   ]"
+    rm "$STDOUT"
+    rm "$STDERR"
+}
+
+function locate_curl()
+{
+    if which curl; then
+	export HAVE_CURL=1
+	export CURL_PATH=`which curl`
+	return 0
+    fi
+
+    exit 1
+}
+
+function locate_wget()
+{
+    if which wget; then
+	export HAVE_WGET=1
+	export WGET_PATH=`which wget`
+	return 0
+    fi
+
+    return 1
+}
+
+function locate_downloader()
+{
+    if locate_wget; then
+	return 0
+    fi
+
+    if locate_curl; then
+	return 0
+    fi
+
+    echo >&2 'Cannot locate neither wget nor curl. Cannot download files.'
+
+    return 0
+}
+
+function download_script()
+{
+    scrname=`basename "$1"`
+    if [[ "x$scrname" == "x" ]]; then
+	scrname="discard"
+    fi
+    
+    DEST="$BLSDROOT/$scrname"
+    if [[ "x$HAVE_WGET" != "x" ]]; then
+	"$WGET_PATH" "$1" -O "$DEST"
+    elif [[ "x$HAVE_CURL" != "x" ]]; then
+	"$CURL_PATH" "$1" > "$DEST"
+    else
+	echo >&2 'No download script found.' 
+    fi
+    
+    return $?
+}
+
+echo -e 'Welcome to \033[1;32mBLSD\033[0m, a script to \033[1;32mb\033[0muild the \033[1;32ml\033[0matest \033[1;32mS\033[0mig\033[1;32mD\033[0migger directly from \033[1mdevelop\033[0m.'
+echo
+echo -e '\033[1mPlease note:\033[0m You are about to build SigDigger directly from the development'
+echo    'branch. This means lots of new untested and half-implemented features whose stability'
+echo -n 'cannot be assured. Are you sure you want to proceed? [Y/n] '
+
+read REPLY
+echo
+
+if [[ $REPLY =~ ^[nN]$ ]]; then
+    echo 'Cancelled.'
+    exit 0
+fi
+
+try 'Detecting downloader tool' locate_downloader
+try 'Cleaning previous builds (if any)' rm -Rfv "$BLSDROOT"
+try "Creating download dir ($BLSDROOT)" mkdir -p "$BLSDROOT"
+try 'Testing Internet connection' download_script 'http://example.com'
+try 'Downloading dist-common.sh (develop)' download_script 'https://raw.githubusercontent.com/BatchDrake/SigDigger/develop/Scripts/dist-common.sh'
+try 'Downloading build.sh (develop)' download_script 'https://raw.githubusercontent.com/BatchDrake/SigDigger/develop/Scripts/build.sh'
+try 'Setting permissions' chmod a+x "$BLSDROOT"/*.sh
+
+echo
+echo ' * * * All scripts downloaded, starting build! * * *'
+echo 
+cd "$BLSDROOT"
+if ./build.sh "$@"; then
+    echo ' * * * Build successful! * * *'
+    echo
+    
+    try 'Moving deploy directory to its final location' mv deploy-root "SigDigger"
+    try 'Cleaning up download directory' rm -Rfv *.com build.sh dist-common.sh build-root
+    echo
+    echo 'SigDigger (along with all its dependencies) has been built to:'
+    echo
+    echo -e "  \033[1m$BLSDROOT/SigDigger/\033[0m"
+    echo 
+    echo -e 'Just place this directory to wherever you want, cd to it and run ./\033[1;32mSigDigger\033[0m'
+fi
+
+############## END of FILE ###############################################################################################
+
+Now
+1) cd ~/tmp; vi SD.sh
+chmod +x SD.sh
 2) cd blsd-dir/SigDigger
 3) ./Sigdigger
 
-SDRPlusPlus
-#######################################################################################
-1) First update you pi
 
+#############
+SDRPlusPlus #
+#############
+Source code for the latest nightly build.
+https://github.com/AlexandreRouma/SDRPlusPlus/archive/refs/heads/master.zip
+
+Source and binaries for stable releases
+https://github.com/AlexandreRouma/SDRPlusPlus/releases
+
+Source and binaries for nightly release.
+https://github.com/AlexandreRouma/SDRPlusPlus/releases/tag/nightly
+
+###########################################################################
+In this example we will build the latest nightly release.
+
+1) First update you pi
 $ sudo apt update; sudo apt upgrade
 
 ***** If you dont have the C compiler installed execute the following. *****
 
-$ sudo apt-get update && sudo apt-get -y install git cmake g++ pkg-config autoconf automake libtool libfftw3-dev libusb-1.0-0-dev libusb-dev libhidapi-dev libopengl-dev qtbase5-dev qtchooser libqt5multimedia5-plugins qtmultimedia5-dev libqt5websockets5-dev qttools5-dev qttools5-dev-tools libqt5opengl5-dev libqt5quick5 libqt5charts5-dev qml-module-qtlocation  qml-module-qtpositioning qml-module-qtquick-window2 qml-module-qtquick-dialogs qml-module-qtquick-controls qml-module-qtquick-controls2 qml-module-qtquick-layouts libqt5serialport5-dev qtdeclarative5-dev qtpositioning5-dev qtlocation5-dev libqt5texttospeech5-dev qtwebengine5-dev qtbase5-private-dev libfaad-dev zlib1g-dev libboost-all-dev libasound2-dev pulseaudio libopencv-dev libxml2-dev bison flex ffmpeg libavcodec-dev libavformat-dev libopus-dev doxygen graphviz libsndfile1 libsndfile1-dev
-
-Then come the dependancies.
-
+$ sudo apt update && sudo apt -y install git cmake g++ pkg-config autoconf automake libtool libfftw3-dev libusb-1.0-0-dev libusb-dev libhidapi-dev libopengl-dev qtbase5-dev qtchooser libqt5multimedia5-plugins qtmultimedia5-dev libqt5websockets5-dev qttools5-dev qttools5-dev-tools libqt5opengl5-dev libqt5quick5 libqt5charts5-dev qml-module-qtlocation  qml-module-qtpositioning qml-module-qtquick-window2 qml-module-qtquick-dialogs qml-module-qtquick-controls qml-module-qtquick-controls2 qml-module-qtquick-layouts libqt5serialport5-dev qtdeclarative5-dev qtpositioning5-dev qtlocation5-dev libqt5texttospeech5-dev qtwebengine5-dev qtbase5-private-dev libfaad-dev zlib1g-dev libboost-all-dev libasound2-dev pulseaudio libopencv-dev libxml2-dev bison flex ffmpeg libavcodec-dev libavformat-dev libopus-dev doxygen graphviz libsndfile1 libsndfile1-dev
 $ sudo apt install libfftw3-dev libglfw3-dev libvolk2-dev libsoapysdr-dev libairspyhf-dev libiio-dev libad9361-dev librtaudio-dev libhackrf-dev
 $ sudo apt install libzstd1 libzstd-dev libairspy-dev librtlsdr-dev
 
@@ -219,6 +387,22 @@ Now to install and run.
 
 $ sudo make install
 $ sdrpp
+
+#############################################################################################################
+Setting up an rtl_tcp server.
+Use ifconfig to get your local IP address.
+Default port number is 1234
+
+$ sudo apt install librtlsdr0 librtlsdr-dev rtl-sdr
+$ cd ~/tmp
+$ rtl_tcp -a xxx.xxx.xxx.xxx 2>&1 >./rtl_tcp.log &
+        #####  IP ADDRESS  #####
+              
+To check if it's running and listening.
+user@debian:~/tmp$ sudo netstat -natp | grep LIST
+tcp        0      0 192.168.1.102:1234      0.0.0.0:*               LISTEN      31860/rtl_tcp 
+
+Now just setup the IP and PORT number in your SDR app and your ready to go.
 
 
 If there is something else that you want made available, please feel free to contact me.
