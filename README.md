@@ -8,7 +8,7 @@ giving you a say in it. As not all apps are available in the software repository
 that I could detail the buid instructions on this site so everyone else can do it. Get everyone
 not just those who can.
 
-(1) Development environment and dependencies courtesy of f4exb of sdrangel fame. Thanks mate. :)
+Development environment and dependencies courtesy of f4exb of sdrangel fame. Thanks mate. :)
 
 $ sudo apt-get update && sudo apt-get -y install build-essential \
 git cmake g++ pkg-config autoconf automake libtool libfftw3-dev libusb-1.0-0-dev libusb-dev libhidapi-dev libopengl-dev \
@@ -30,7 +30,7 @@ $ sudo apt install libsoapysdr-dev libsoapysdr0.7 soapysdr-module-all
 
 SigDigger latest main release.
 
-(2) Now we download and build sigutils, suscan, SuWidgets and SigDigger.
+Now we download and build sigutils, suscan, SuWidgets and SigDigger.
 
 Make a temporary directory to download and build the code.
 
@@ -120,8 +120,7 @@ $ ./SigDigger
 
 By executing the following, you will download and compile the latest dev release.
 This release fixed the issue of the DC spike you see in the middle of the spectrum display.
-And if you like, you can keep up with the latest. Create as file called SD.sh in dir ~/tmp
-and paste the following code into it, make it executable and run.
+And if you like, you can keep up with the latest.
 
 Grab the script SD.sh from the releases section and save it into ~/tmp
 Now
@@ -276,7 +275,7 @@ $ sdrpp
 
 
 
-Setting up a RTL_TCP SERVER
+##### Setting up a RTL_TCP SERVER #####
 
 Use ifconfig to get your local IP address. In our example eth0 is 192.168.45.183
 
@@ -295,6 +294,14 @@ tcp        0      0 192.168.1.102:1234      0.0.0.0:*               LISTEN      
 
 Now just setup the IP and PORT number in your SDR app and your ready to go.
 
+
+
+#####  LIVE RTL_SDR Server to test you App  #####
+#####  Located in Canberra, ACT, Australia  #####
+
+Configure the host and port for your rtl_tcp source.
+
+#####  rtlsdr.tplinkdns.com PORT 1234  #####
 
 If there is something else that you want made available, please feel free to contact me.
 Feel free to report any issues or if you'd like to see something else added.
