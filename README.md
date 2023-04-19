@@ -8,9 +8,7 @@ giving you a say in it. As not all apps are available in the software repository
 that I could detail the buid instructions on this site so everyone else can do it. Get everyone
 not just those who can.
 
-##################################################################################################
-(1) Development environment and dependencies courtesy of f4exb of sdrangel fame. Thanks mate. :) #
-##################################################################################################
+(1) Development environment and dependencies courtesy of f4exb of sdrangel fame. Thanks mate. :)
 
 $ sudo apt-get update && sudo apt-get -y install build-essential \
 git cmake g++ pkg-config autoconf automake libtool libfftw3-dev libusb-1.0-0-dev libusb-dev libhidapi-dev libopengl-dev \
@@ -27,9 +25,8 @@ ffmpeg libavcodec-dev libavformat-dev libopus-dev doxygen graphviz libsndfile1 l
 $ sudo apt install libsoapysdr-dev libsoapysdr0.7 soapysdr-module-all
 
 
-###################################################################################################
-SigDigger latest main release.                                                                    #
-###################################################################################################
+
+SigDigger latest main release.
 
 (2) Now we download and build sigutils, suscan, SuWidgets and SigDigger.
 Make a temporary directory to download and build the code.
