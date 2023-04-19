@@ -300,9 +300,9 @@ LIVE RTL_SDR Server to test you App.
 
 Located in Canberra, ACT, Australia.
 
-Configure the host and port for your rtl_tcp source.
+Configure the host and port as your rtl_tcp source.
 
-HOST ip://rtlsdr.tplinkdns.com PORT 1234
+HOST: rtlsdr.tplinkdns.com, PORT: 1234
 
 If there is something else that you want made available, please feel free to contact me.
 Feel free to report any issues or if you'd like to see something else added.
