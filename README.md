@@ -296,7 +296,7 @@ Now just setup the IP and PORT number in your SDR app and your ready to go.
 
 
 
-LIVE RTL_SDR Server to test you App.
+LIVE RTL_SDR Server to test your SDR App.
 
 Located in Canberra, ACT, Australia.
 
