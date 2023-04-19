@@ -126,16 +126,15 @@ and paste the following code into it, make it executable and run.
 Grab the script SD.sh from the releases section and save it into ~/tmp
 Now
 
-1) cd ~/tmp; Chmod +x SD.sh
+1) cd ~/tmp; chmod +x SD.sh
 
 2) ./SD.sh
 
 3) 
 
 
-#############
-SDRPlusPlus #
-#############
+#####  SDRPlusPlus  #####
+
 Source code for the latest nightly build.
 
 https://github.com/AlexandreRouma/SDRPlusPlus/archive/refs/heads/master.zip
@@ -171,7 +170,7 @@ $ cd SDRPlusPlus-master
 $ mkdir build;cd build
 $ cmake ..
 
-### NOTE ###############################################################
+####################### NOTE ############################
 If you get errors while running cmake it will most likely be a missing library.
 For example.
 
@@ -275,9 +274,9 @@ Now to install and run.
 $ sudo make install
 $ sdrpp
 
-RTL_TCP SERVER
 
-Setting up an rtl_tcp server.
+
+Setting up a RTL_TCP SERVER
 
 Use ifconfig to get your local IP address. In our example eth0 is 192.168.45.183
 
