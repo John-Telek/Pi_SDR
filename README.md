@@ -137,18 +137,21 @@ Now
 SDRPlusPlus #
 #############
 Source code for the latest nightly build.
+
 https://github.com/AlexandreRouma/SDRPlusPlus/archive/refs/heads/master.zip
 
 Source and binaries for stable releases
+
 https://github.com/AlexandreRouma/SDRPlusPlus/releases
 
 Source and binaries for nightly release.
+
 https://github.com/AlexandreRouma/SDRPlusPlus/releases/tag/nightly
 
-###########################################################################
 In this example we will build the latest nightly release.
 
 1) First update you pi
+
 $ sudo apt update; sudo apt upgrade
 
 ***** If you dont have the C compiler installed execute the following. *****
@@ -272,9 +275,12 @@ Now to install and run.
 $ sudo make install
 $ sdrpp
 
-#############################################################################################################
+RTL_TCP SERVER
+
 Setting up an rtl_tcp server.
+
 Use ifconfig to get your local IP address.
+
 Default port number is 1234
 
 $ sudo apt install librtlsdr0 librtlsdr-dev rtl-sdr
