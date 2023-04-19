@@ -123,141 +123,14 @@ This release fixed the issue of the DC spike you see in the middle of the spectr
 And if you like, you can keep up with the latest. Create as file called SD.sh in dir ~/tmp
 and paste the following code into it, make it executable and run.
 
-############### BEGINNING of FILE
-#!/usr/bin/env bash
-
-DISTROOT="$PWD"
-BLSDROOT="$DISTROOT/blsd-dir"
-
-function try()
-{
-    echo -en "[  ....  ] $1 "
-    shift
-    
-    STDOUT="$DISTROOT/$1-$$-stdout.log"
-    STDERR="$DISTROOT/$1-$$-stderr.log"
-    "$@" > "$STDOUT" 2> "$STDERR"
-    
-    if [ $? != 0 ]; then
-	echo -e "\r[ \033[1;31mFAILED\033[0m ]"
-	echo
-	echo "Standard output and error were saved respectively in:"
-	echo " - $STDOUT"
-	echo " - $STDERR"
-	echo
-	echo "Fix errors and try again"
-	echo
-	exit 1
-    fi
-
-    echo -e "\r[   \033[1;32mOK\033[0m   ]"
-    rm "$STDOUT"
-    rm "$STDERR"
-}
-
-function locate_curl()
-{
-    if which curl; then
-	export HAVE_CURL=1
-	export CURL_PATH=`which curl`
-	return 0
-    fi
-
-    exit 1
-}
-
-function locate_wget()
-{
-    if which wget; then
-	export HAVE_WGET=1
-	export WGET_PATH=`which wget`
-	return 0
-    fi
-
-    return 1
-}
-
-function locate_downloader()
-{
-    if locate_wget; then
-	return 0
-    fi
-
-    if locate_curl; then
-	return 0
-    fi
-
-    echo >&2 'Cannot locate neither wget nor curl. Cannot download files.'
-
-    return 0
-}
-
-function download_script()
-{
-    scrname=`basename "$1"`
-    if [[ "x$scrname" == "x" ]]; then
-	scrname="discard"
-    fi
-    
-    DEST="$BLSDROOT/$scrname"
-    if [[ "x$HAVE_WGET" != "x" ]]; then
-	"$WGET_PATH" "$1" -O "$DEST"
-    elif [[ "x$HAVE_CURL" != "x" ]]; then
-	"$CURL_PATH" "$1" > "$DEST"
-    else
-	echo >&2 'No download script found.' 
-    fi
-    
-    return $?
-}
-
-echo -e 'Welcome to \033[1;32mBLSD\033[0m, a script to \033[1;32mb\033[0muild the \033[1;32ml\033[0matest \033[1;32mS\033[0mig\033[1;32mD\033[0migger directly from \033[1mdevelop\033[0m.'
-echo
-echo -e '\033[1mPlease note:\033[0m You are about to build SigDigger directly from the development'
-echo    'branch. This means lots of new untested and half-implemented features whose stability'
-echo -n 'cannot be assured. Are you sure you want to proceed? [Y/n] '
-
-read REPLY
-echo
-
-if [[ $REPLY =~ ^[nN]$ ]]; then
-    echo 'Cancelled.'
-    exit 0
-fi
-
-try 'Detecting downloader tool' locate_downloader
-try 'Cleaning previous builds (if any)' rm -Rfv "$BLSDROOT"
-try "Creating download dir ($BLSDROOT)" mkdir -p "$BLSDROOT"
-try 'Testing Internet connection' download_script 'http://example.com'
-try 'Downloading dist-common.sh (develop)' download_script 'https://raw.githubusercontent.com/BatchDrake/SigDigger/develop/Scripts/dist-common.sh'
-try 'Downloading build.sh (develop)' download_script 'https://raw.githubusercontent.com/BatchDrake/SigDigger/develop/Scripts/build.sh'
-try 'Setting permissions' chmod a+x "$BLSDROOT"/*.sh
-
-echo
-echo ' * * * All scripts downloaded, starting build! * * *'
-echo 
-cd "$BLSDROOT"
-if ./build.sh "$@"; then
-    echo ' * * * Build successful! * * *'
-    echo
-    
-    try 'Moving deploy directory to its final location' mv deploy-root "SigDigger"
-    try 'Cleaning up download directory' rm -Rfv *.com build.sh dist-common.sh build-root
-    echo
-    echo 'SigDigger (along with all its dependencies) has been built to:'
-    echo
-    echo -e "  \033[1m$BLSDROOT/SigDigger/\033[0m"
-    echo 
-    echo -e 'Just place this directory to wherever you want, cd to it and run ./\033[1;32mSigDigger\033[0m'
-fi
-
-############## END of FILE ###############################################################################################
-
+Grab the script SD.sh from the releases section and save it into ~/tmp
 Now
-1) cd ~/tmp; vi SD.sh
-chmod +x SD.sh
-2) cd blsd-dir/SigDigger
-3) ./Sigdigger
+
+1) cd ~/tmp; Chmod +x SD.sh
+
+2) ./SD.sh
+
+3) 
 
 
 #############
