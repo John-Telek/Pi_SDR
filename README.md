@@ -296,12 +296,12 @@ Now just setup the IP and PORT number in your SDR app and your ready to go.
 
 
 
-#####  LIVE RTL_SDR Server to test you App  #####
-#####  Located in Canberra, ACT, Australia  #####
+LIVE RTL_SDR Server to test you App.
+Located in Canberra, ACT, Australia.
 
 Configure the host and port for your rtl_tcp source.
 
-#####  rtlsdr.tplinkdns.com PORT 1234  #####
+rtlsdr.tplinkdns.com PORT 1234
 
 If there is something else that you want made available, please feel free to contact me.
 Feel free to report any issues or if you'd like to see something else added.
