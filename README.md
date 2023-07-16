@@ -8,6 +8,22 @@ giving you a say in it. As not all apps are available in the software repository
 that I could detail the buid instructions on this site so everyone else can do it. Get everyone
 not just those who can.
 
+The build guides are below but fiest latest news.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Development environment and dependencies courtesy of f4exb of sdrangel fame. Thanks mate. :)
 
 $ sudo apt-get update && sudo apt-get -y install build-essential \
@@ -22,98 +38,63 @@ libfaad-dev zlib1g-dev libboost-all-dev libasound2-dev pulseaudio libopencv-dev 
 ffmpeg libavcodec-dev libavformat-dev libopus-dev doxygen graphviz libsndfile1 libsndfile1-dev
 
 ** The following installs the SoapySDR libs.
-
 $ sudo apt install libsoapysdr-dev libsoapysdr0.7 soapysdr-module-all
 
-
 ##########################################
-
-SigDigger latest main release.
-
+SigDiger latest main release.
 Now we download and build sigutils, suscan, SuWidgets and SigDigger.
-
 Make a temporary directory to download and build the code.
-
 ** We will get everything in one hit.
 $ cd ~
-
 $ mkdir tmp;cd tmp
-
 $ git clone https://github.com/BatchDrake/sigutils
-
 $ git clone https://github.com/BatchDrake/suscan
-
 $ git clone https://github.com/BatchDrake/SuWidgets
-
 $ git clone https://github.com/BatchDrake/SigDigger
 
 (3) Building and installing sigutils
-
 First, you must create a build directory and configure it with:
 
 $ cd ~/tmp/sigutils
-
 $ mkdir build
-
 $ cd build
-
 $ cmake ..
 
 (4) If the previous commands were successful, you can start the build by typing:
-
 $ make
 
 (5) And proceed to install the library in your system by running as root:
-
 $ sudo make install
-
 $ sudo ldconfig
 
 (6) Building and installing suscan.
 
 $ cd ~/tmp/suscan
-
 $ mkdir build
-
 $ cd build
-
 $ cmake ..
-
 $ make
 
 (7) If all is well.
-
 $ sudo make install
-
 $ sudo ldconfig
 
-
 (8) You can verify your installation by running:
-
 $ suscan.status
 
 (9) Building and installing SuWidgets.
-
 $ cd ~/tmp/SuWudgets
-
 $ qmake SuWidgetsLib.pro
-
 $ make
-
 $ sudo make install
 
 (10) Building and installing SigDigger.
-
 $ cd ~/tmp/SigDigger
-
 $ qmake SigDigger.pro
-
 $ make -j5
-
 $ sudo make install
 
 (11) To run.
-
 $ ./SigDigger
 
 ##############################
@@ -126,30 +107,19 @@ Grab the script SD.sh from the releases section and save it into ~/tmp
 Now
 
 1) cd ~/tmp; chmod +x SD.sh
-
 2) ./SD.sh
-
 3) 
 
-
 #####  SDRPlusPlus  #####
-
 Source code for the latest nightly build.
-
 https://github.com/AlexandreRouma/SDRPlusPlus/archive/refs/heads/master.zip
-
 Source and binaries for stable releases
-
 https://github.com/AlexandreRouma/SDRPlusPlus/releases
-
 Source and binaries for nightly release.
-
 https://github.com/AlexandreRouma/SDRPlusPlus/releases/tag/nightly
 
 In this example we will build the latest nightly release.
-
 1) First update you pi
-
 $ sudo apt update; sudo apt upgrade
 
 ***** If you dont have the C compiler installed execute the following. *****
