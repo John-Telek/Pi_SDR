@@ -155,7 +155,7 @@ cmake -Wno-dev -DDETACH_KERNEL_DRIVER=ON -DCMAKE_INSTALL_PREFIX=/opt/install/lib
 sudo make -j3 install
 sudo ldconfig 
 
-HackRF
+echo HackRF
 
 cd /opt/build
 git clone https://github.com/greatscottgadgets/hackrf.git
@@ -172,7 +172,7 @@ cd /opt/build
 git clone https://github.com/f4exb/sdrangel.git
 cd sdrangel
 mkdir build; cd build
-cmake -Wno-dev -DDEBUG_OUTPUT=ON -DRX_SAMPLE_24BIT=OFF \
+cmake -Wno-dev -DDEBUG_OUTPUT=OFF -DRX_SAMPLE_24BIT=OFF \
 -DCMAKE_BUILD_TYPE=RelWithDebInfo \
 -DAIRSPY_DIR=/opt/install/libairspy \
 -DHACKRF_DIR=/opt/install/libhackrf \
@@ -187,7 +187,7 @@ cmake -Wno-dev -DDEBUG_OUTPUT=ON -DRX_SAMPLE_24BIT=OFF \
 -DLIBSIGMF_DIR=/opt/install/libsigmf \
 -DDAB_DIR=/opt/install/libdab \
 -DCMAKE_INSTALL_PREFIX=/opt/install/sdrangel ..
-sudo make -j3 install
+sudo make install
 sudo ldconfig 
 
 echo SDRAngel Build is complete.
